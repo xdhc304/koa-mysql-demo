@@ -35,7 +35,8 @@ const service = {
   },
   addblog: (obj) => {
     let _sql = "insert into tb_blog set blog_title=?,blog_author=?,blog_url=?,blog_platform=?,create_time=?,last_edit_time=?;"
-    return service.query(_sql, obj)
+    // let _sql = sql.INSERT_TABLE('tb_blog', obj);
+    return service.query(_sql)
   }
 }
 

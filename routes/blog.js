@@ -26,6 +26,15 @@ router.get('/add', async (ctx, next) => {
   arr.push(new Date());
   arr.push(new Date());
 
+  // let obj = {
+  //   blog_title: 'koa2',
+  //   blog_author: 'xdhc304',
+  //   blog_url: 'https://www.jianshu.com/p/b4e36739d85a',
+  //   blog_platform: '简书',
+  //   create_time: new Date(),
+  //   last_edit_time: new Date()
+  // }
+
   await service.addblog(arr).then((data) => {
     if (data.affectedRows != 0) {
       ctx.body = {

@@ -2,11 +2,13 @@ const router = require('koa-router')()
 const service = require('../utils/query')
 const ResultUtil = require('../utils/result')
 
-router.prefix('/users')
+router.prefix('/blog')
 
 router.get('/list', async (ctx, next) => {
-  const result = await service.listblog(1)
-  ctx.body = ResultUtil.success(result);
+  let id = ctx.request.query.id;
+  await service.listblog(id).then((data) => {
+    ctx.body = ResultUtil.success(data);
+  })
 })
 
 router.get('/add', async (ctx, next) => {

@@ -25,12 +25,12 @@ const service = {
       })
     })
   },
-  listblog: (name) => {
-    let _sql = sql.QUERY_TABLE(name);
+  listblog: () => {
+    let _sql = sql.QUERY_TABLE('tb_blog');
     return service.query(_sql)
   },
   getblogbyid: (id) => {
-    let _sql = `select * from tb_blog where blog_id="${id}";`
+    let _sql = sql.QUERY_ITEM('tb_blog', 'blog_id', id);
     return service.query(_sql)
   },
   addblog: (obj) => {

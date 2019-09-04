@@ -9,6 +9,9 @@ const CREATE_TABLE = `CREATE TABLE IF NOT EXISTS user(
 // 查询数据表
 const QUERY_TABLE = (tableName) => `SELECT * FROM ${tableName}`
 
+// 查询数据
+const QUERY_ITEM = (tableName, key, val) => `SELECT * FROM ${tableName} WHERE ${key} = ${val}`
+
 // 插入数据
 const INSERT_TABLE = (tableName, {key, val}) => `INSERT INTO ${tableName}(${key}) VALUES (${val})`
 
@@ -20,6 +23,7 @@ const DELETE_TABLE = (tableName, {primaryKey, primaryVal}) => `DELETE FROM user 
 
 module.exports = {
   QUERY_TABLE,
+  QUERY_ITEM,
   CREATE_TABLE,
   INSERT_TABLE,
   UPDATE_TABLE,

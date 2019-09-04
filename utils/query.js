@@ -1,4 +1,5 @@
 const mysql = require('mysql')
+const sql = require('./sql')
 const MYSQL_CONFIG = require('../config/mysql_config') // 数据库配置
 
 // mysql
@@ -25,7 +26,11 @@ const service = {
     })
   },
   listblog: (name) => {
-    let _sql = `select * from tb_blog where blog_id="${name}";`
+    let _sql = sql.QUERY_TABLE(name);
+    return service.query(_sql)
+  },
+  getblogbyid: (id) => {
+    let _sql = `select * from tb_blog where blog_id="${id}";`
     return service.query(_sql)
   },
   addblog: (obj) => {

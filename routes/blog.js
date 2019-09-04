@@ -5,8 +5,14 @@ const ResultUtil = require('../utils/result')
 router.prefix('/blog')
 
 router.get('/list', async (ctx, next) => {
+  await service.listblog('tb_blog').then((data) => {
+    ctx.body = ResultUtil.success(data);
+  })
+})
+
+router.get('/getblogbyid', async (ctx, next) => {
   let id = ctx.request.query.id;
-  await service.listblog(id).then((data) => {
+  await service.getblogbyid(id).then((data) => {
     ctx.body = ResultUtil.success(data);
   })
 })

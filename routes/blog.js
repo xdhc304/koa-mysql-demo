@@ -6,6 +6,13 @@ router.prefix('/blog')
 
 router.get('/list', async (ctx, next) => {
   await service.listblog().then((data) => {
+    data.forEach(val => {
+      for (i in val) {
+        let index = ResultUtil.toHump(i);
+        val[index] = val[i];
+        delete val[i];
+      }
+    });
     ctx.body = ResultUtil.success(data);
   })
 })
@@ -13,6 +20,13 @@ router.get('/list', async (ctx, next) => {
 router.get('/getblogbyid', async (ctx, next) => {
   let id = ctx.request.query.id;
   await service.getblogbyid(id).then((data) => {
+    data.forEach(val => {
+      for (i in val) {
+        let index = ResultUtil.toHump(i);
+        val[index] = val[i];
+        delete val[i];
+      }
+    });
     ctx.body = ResultUtil.success(data);
   })
 })

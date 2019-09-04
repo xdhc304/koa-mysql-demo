@@ -14,6 +14,14 @@ const ResultUtil = {
       message: data ? data : undefined
     }
     return obj
+  },
+  toHump: (str) => {
+    return str.replace(/\_(\w)/g, function(all, letter){
+      return letter.toUpperCase();
+    });
+  },
+  toLine: (str) => {
+    return str.replace(/([A-Z])/g, "_$1").toLowerCase();
   }
 }
 

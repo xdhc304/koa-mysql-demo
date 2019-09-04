@@ -19,12 +19,10 @@ router.get('/add', async (ctx, next) => {
   arr.push(new Date());
 
   await service.addblog(arr).then((data) => {
-    let r = '';
     if (data.affectedRows != 0) {
-      r = 'ok';
-    }
-    ctx.body = {
-      data: r
+      ctx.body = {
+        data: r
+      }
     }
   }).catch(() => {
     ctx.body = {

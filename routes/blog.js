@@ -31,6 +31,20 @@ router.get('/getblogbyid', async (ctx, next) => {
   })
 })
 
+router.get('/getblogbyid/:id', async (ctx, next) => {
+  let {id} = ctx.params;
+  await service.getblogbyid(id).then((data) => {
+    data.forEach(val => {
+      for (i in val) {
+        let index = ResultUtil.toHump(i);
+        val[index] = val[i];
+        delete val[i];
+      }
+    });
+    ctx.body = ResultUtil.success(data);
+  })
+})
+
 router.get('/add', async (ctx, next) => {
   let arr = [];
   arr.push('koa2');
